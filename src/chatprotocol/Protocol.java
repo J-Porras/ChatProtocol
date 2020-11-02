@@ -17,7 +17,8 @@ public class Protocol {
     // parte cliente -> server
     public static final int LOGIN = 1;
     public static final int LOGOUT = 2;
-    public static final int MSG = 3;
+    public static final int SIGNIN = 3;
+    public static final int MSG = 4;
     
     
     // parte server -> cliente
