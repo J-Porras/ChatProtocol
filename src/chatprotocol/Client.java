@@ -20,6 +20,7 @@ public class Client {
     private String nombre;
     private String nickname;
     private List<Client> friends;
+    private Client destino;
     
     public Client(){}
 
@@ -71,6 +72,14 @@ public class Client {
 
     public void setFriends(List<Client> friends) {
         this.friends = friends;
+    }
+
+    public Client getDestino() {
+        return destino;
+    }
+
+    public void setDestino(Client destino) {
+        this.destino = destino;
     }
     
     
