@@ -13,6 +13,6 @@ public interface IService{
     public Client login(Client c) throws Exception;
     public void logout(Client c) throws Exception;
     public void signin(Client c) throws Exception;
-    public void post_msg(String msg);
+    public void post_msg(String msg,Client c);
     
 }
