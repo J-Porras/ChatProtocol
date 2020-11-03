@@ -5,6 +5,8 @@
  */
 package chatprotocol;
 
+import java.util.List;
+
 /**
  *
  * @author Porras
@@ -14,5 +16,6 @@ public interface IService{
     public void logout(Client c) throws Exception;
     public void signin(Client c) throws Exception;
     public void post_msg(String msg,Client c);
+    public void giveClients();
     
 }
