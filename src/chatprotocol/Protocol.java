@@ -25,7 +25,7 @@ public class Protocol {
     // parte server -> cliente
     public static final int DELIVER = 1;
     public static final int ON_USERS = 2;
-    
+  
     public static final int ERROR_NO_ERROR = 0;
     public static final int ERROR_LOGIN = 1;
     public static final int ERROR_LOGOUT = 2;
