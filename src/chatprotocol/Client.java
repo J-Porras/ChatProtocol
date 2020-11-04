@@ -5,6 +5,7 @@
  */
 package chatprotocol;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author Porras
  */
-public class Client {
+public class Client implements Serializable{
     
     private String id;
     private String password;
@@ -28,6 +29,7 @@ public class Client {
         this.nombre = "";
         this.nickname = "";
         this.friends = Collections.synchronizedList(new ArrayList<Client>());
+        destino = null;
     }
 
     public Client(String id, String password, String nombre, String nickname, List<Client> friends) {
@@ -88,13 +90,4 @@ public class Client {
         this.destino = destino;
     }
     
-    
-    
-        
-        
-    
-    
-    
-    
-    
-}
+}//fin clase
