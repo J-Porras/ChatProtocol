@@ -22,6 +22,7 @@ public class Client implements Serializable{
     private String nickname;
     private List<Client> friends;
     private Client destino;
+    private boolean isonline;
     
     public Client(){
         this.id = "";
@@ -30,6 +31,7 @@ public class Client implements Serializable{
         this.nickname = "";
         this.friends = Collections.synchronizedList(new ArrayList<Client>());
         destino = null;
+        isonline = false;
     }
 
     public Client(String id, String password, String nombre, String nickname, List<Client> friends) {
@@ -38,6 +40,7 @@ public class Client implements Serializable{
         this.nombre = nombre;
         this.nickname = nickname;
         this.friends = Collections.synchronizedList(new ArrayList<Client>());
+        isonline = false;
     }
 
     
@@ -89,5 +92,15 @@ public class Client implements Serializable{
     public void setDestino(Client destino) {
         this.destino = destino;
     }
+
+    public boolean getIsonline() {
+        return isonline;
+    }
+
+    public void setIsonline(boolean isonline) {
+        this.isonline = isonline;
+    }
+    
+    
     
 }//fin clase
