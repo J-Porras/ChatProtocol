@@ -11,7 +11,7 @@ package chatprotocol;
  */
 public class Protocol {
     public static final String SERVER = "localhost";
-    public static final int PORT = 8086;
+    public static final int PORT = 3386;
     
     
     // parte cliente -> server

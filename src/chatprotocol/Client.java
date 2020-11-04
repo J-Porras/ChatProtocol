@@ -22,7 +22,13 @@ public class Client {
     private List<Client> friends;
     private Client destino;
     
-    public Client(){}
+    public Client(){
+        this.id = "";
+        this.password = "";
+        this.nombre = "";
+        this.nickname = "";
+        this.friends = Collections.synchronizedList(new ArrayList<Client>());
+    }
 
     public Client(String id, String password, String nombre, String nickname, List<Client> friends) {
         this.id = id;
