@@ -45,6 +45,9 @@ public class Client implements Serializable{
 
     
     // get and set por variable
+    
+    
+    
     public String getId() {
         return id;
     }

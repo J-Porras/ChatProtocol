@@ -17,5 +17,6 @@ public interface IService{
     public void signin(Client c) throws Exception;
     public void post_msg(String msg,Client c) throws Exception;
     public void giveClients(Client c) throws Exception;
+    public Client addFriend(Client c )throws Exception;
     
 }
