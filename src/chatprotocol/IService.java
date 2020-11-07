@@ -14,8 +14,7 @@ import java.util.List;
 public interface IService{
     public Client login(Client c) throws Exception;
     public void logout(Client c) throws Exception;
-    public void signin(Client c) throws Exception;
-    public void post(String msg,Client c) throws Exception;
+    public void post(Mensaje msg) throws Exception;
     public void giveClients(Client c) throws Exception;
     public Client addFriend(Client c )throws Exception;
     

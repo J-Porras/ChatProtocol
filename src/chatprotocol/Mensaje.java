@@ -16,18 +16,18 @@ import java.util.List;
 public class Mensaje {
     private Client destino;
     private Client remitente;
-    private List<String>  mensajes;
+    private String mensaje;
 
-    public Mensaje(Client destino, Client remitente, List<String> mensajes) {
+    public Mensaje(Client destino, Client remitente, String mensaje) {
         this.destino = destino;
         this.remitente = remitente;
-        this.mensajes = mensajes;
+        this.mensaje = mensaje;
     }
     
     public Mensaje(){
         destino = new Client();
         remitente = new Client();
-        mensajes = Collections.synchronizedList(new ArrayList<String>());
+        mensaje = "-";
         
     }
 
@@ -47,13 +47,15 @@ public class Mensaje {
         this.remitente = remitente;
     }
 
-    public List<String> getMensajes() {
-        return mensajes;
+    public String getMensaje() {
+        return mensaje;
     }
 
-    public void setMensajes(List<String> mensajes) {
-        this.mensajes = mensajes;
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
+
+    
     
     
     
