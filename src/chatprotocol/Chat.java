@@ -5,6 +5,7 @@
  */
 package chatprotocol;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +16,7 @@ import javax.xml.bind.annotation.XmlIDREF;
  *
  * @author Porras
  */
-public class Chat {
+public class Chat implements Serializable {
     
     private String codigo;
     @XmlIDREF
