@@ -27,12 +27,13 @@ public class Client implements Serializable{
     private String password;
     private String nombre;
     private String nickname;
-    @XmlIDREF
+    
     private List<Client> friends;
-    @XmlIDREF
     private List<Chat> chats;
+    
     @XmlIDREF
     private Client destino;
+    
     private boolean isonline;
     
     public Client(){
@@ -118,7 +119,7 @@ public class Client implements Serializable{
     }
 
     public Client getDestino() {
-        return destino;
+        return this.destino;
     }
 
     public void setDestino(Client destino) {

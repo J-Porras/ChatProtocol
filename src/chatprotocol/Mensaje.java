@@ -8,43 +8,49 @@ package chatprotocol;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.xml.bind.annotation.XmlIDREF;
 
 /**
  *
  * @author Porras
  */
 public class Mensaje {
-    private Client destino;
-    private Client remitente;
+    
+    private String codigo;
+    @XmlIDREF
+    private Client _destino;
+    @XmlIDREF
+    private Client _remitente;
     private String mensaje;
 
     public Mensaje(Client destino, Client remitente, String mensaje) {
-        this.destino = destino;
-        this.remitente = remitente;
+        this._destino = destino;
+        this._remitente = remitente;
         this.mensaje = mensaje;
+        codigo = destino.getNickname() + " - " + remitente.getNickname() + mensaje.substring(1);
     }
     
     public Mensaje(){
-        destino = new Client();
-        remitente = new Client();
+        _destino = new Client();
+        _remitente = new Client();
         mensaje = "-";
         
     }
 
     public Client getDestino() {
-        return destino;
+        return _destino;
     }
 
     public void setDestino(Client destino) {
-        this.destino = destino;
+        this._destino = destino;
     }
 
     public Client getRemitente() {
-        return remitente;
+        return _remitente;
     }
 
     public void setRemitente(Client remitente) {
-        this.remitente = remitente;
+        this._remitente = remitente;
     }
 
     public String getMensaje() {

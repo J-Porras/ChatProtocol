@@ -8,6 +8,7 @@ package chatprotocol;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlIDREF;
 
 /**
@@ -15,27 +16,23 @@ import javax.xml.bind.annotation.XmlIDREF;
  * @author Porras
  */
 public class Chat {
+    
     private String codigo;
     @XmlIDREF
-    private Client remitente;
+    private Client emisor;
     @XmlIDREF
-    private Client destino;
-    @XmlIDREF
+    private Client receptor;
+    
     private List<Mensaje> chat;
     
     public Chat(){}
 
 
-    public Chat(Client remitente, Client destino, List<Mensaje> chat) {
-        this.remitente = remitente;
-        this.destino = destino;
-        this.chat = Collections.synchronizedList(chat);
-        codigo = this.remitente.getNickname() + "-"+ this.destino.getNickname();
-    }
+ 
     
-    public Chat(Client remitente,Client destino){
-        this.remitente = remitente;
-        this.destino = destino;
+    public Chat(Client emisor,Client receptor){
+        this.emisor = emisor;
+        this.receptor = receptor;
         this.chat = Collections.synchronizedList(new ArrayList<Mensaje>());
     }
 
@@ -63,19 +60,19 @@ public class Chat {
     }
 
     public Client getRemitente() {
-        return remitente;
+        return emisor;
     }
 
     public void setRemitente(Client remitente) {
-        this.remitente = remitente;
+        this.emisor = remitente;
     }
 
     public Client getDestino() {
-        return destino;
+        return receptor;
     }
 
-    public void setDestino(Client destino) {
-        this.destino = destino;
+    public void setDestino(Client receptor) {
+        this.receptor = receptor;
     }
     
     
