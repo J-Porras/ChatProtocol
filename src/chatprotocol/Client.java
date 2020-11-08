@@ -154,22 +154,23 @@ public class Client implements Serializable{
     public Chat getChatFriend(String nickname){
         System.out.println("Chat protocol get chat friend");
         for (int i = 0; i < this.chats.size(); i++) {
-            if (chats.get(i).getChat().get(i).getDestino().getNickname()== nickname) {
-                System.out.println("chat encontrado");
+            if (this.chats.get(i).getDestino().getNickname()== nickname) {
+                System.out.println("OJO: chat encontrado");
                 return chats.get(i);
             }
         }
-        
+        System.out.println("OJO CHAT NO ENCONTRADO");
         return null;
     }
     
     public void addtoChat(Mensaje msg){//busca el primer msg de la conversacion
         Client destino = msg.getDestino();
         for (int i = 0; i < this.chats.size(); i++) {
-            if (chats.get(i).getChat().get(i).getDestino().getNickname() == destino.getNickname()) {
+            if (this.chats.get(i).getDestino().getNickname() == destino.getNickname()) {
                 chats.get(i).getChat().add(msg);
                 break;
             }
+            
         }
     }
     
