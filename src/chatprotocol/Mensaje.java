@@ -9,48 +9,49 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlIDREF;
 
 /**
  *
  * @author Porras
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Mensaje implements Serializable{
     
     private String codigo;
-    @XmlIDREF
-    private Client _destino;
-    @XmlIDREF
-    private Client _remitente;
+  //  @XmlIDREF
+    private String _destino;
+    //@XmlIDREF
+    private String _remitente;
     private String mensaje;
 
-    public Mensaje(Client destino, Client remitente, String mensaje) {
+    public Mensaje(String destino, String remitente, String mensaje) {
         this._destino = destino;
         this._remitente = remitente;
         this.mensaje = mensaje;
-        codigo = destino.getNickname() + " - " + remitente.getNickname() + mensaje.substring(1);
+        codigo = destino + " - " + remitente + mensaje.substring(1);
     }
     
     public Mensaje(){
-        _destino = new Client();
-        _remitente = new Client();
-        mensaje = "-";
+     
         
     }
 
-    public Client getDestino() {
+    public String getDestino() {
         return _destino;
     }
 
-    public void setDestino(Client destino) {
+    public void setDestino(String destino) {
         this._destino = destino;
     }
 
-    public Client getRemitente() {
+    public String getRemitente() {
         return _remitente;
     }
 
-    public void setRemitente(Client remitente) {
+    public void setRemitente(String remitente) {
         this._remitente = remitente;
     }
 

@@ -9,20 +9,25 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Porras
  */
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Chat implements Serializable {
     
     private String codigo;
-    @XmlIDREF
-    private Client emisor;
-    @XmlIDREF
-    private Client receptor;
+ //@XmlIDREF
+    private String emisor;
+   //@XmlIDREF
+    private String receptor;
     
     private List<Mensaje> chat;
     
@@ -31,7 +36,7 @@ public class Chat implements Serializable {
 
  
     
-    public Chat(Client emisor,Client receptor){
+    public Chat(String emisor,String receptor){
         this.emisor = emisor;
         this.receptor = receptor;
         this.chat = Collections.synchronizedList(new ArrayList<Mensaje>());
@@ -60,19 +65,19 @@ public class Chat implements Serializable {
         chat.add(msg);
     }
 
-    public Client getRemitente() {
+    public String getRemitente() {
         return emisor;
     }
 
-    public void setRemitente(Client remitente) {
+    public void setRemitente(String remitente) {
         this.emisor = remitente;
     }
 
-    public Client getDestino() {
+    public String getDestino() {
         return receptor;
     }
 
-    public void setDestino(Client receptor) {
+    public void setDestino(String receptor) {
         this.receptor = receptor;
     }
     

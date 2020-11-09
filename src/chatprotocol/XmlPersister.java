@@ -26,13 +26,15 @@ public class XmlPersister{
     
     public static XmlPersister getInstance(String id){
         if (Instance==null) {
-            Instance = new XmlPersister();
-            Instance.setPath(id+".xml");
+            Instance = new XmlPersister(id+".xml");
+          
             return Instance;
         }
         return Instance;
     }
-
+ public XmlPersister(String p) {
+            path=p;         
+    } 
     public String getPath() {
         return path;
     }

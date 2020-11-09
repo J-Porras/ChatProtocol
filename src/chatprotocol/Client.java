@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlIDREF;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Client implements Serializable{
     
-    @XmlID
+    //@XmlID
     private String id;
     
     private String password;
@@ -31,44 +31,69 @@ public class Client implements Serializable{
     private List<Client> friends;
     private List<Chat> chats;
     
-    @XmlIDREF
-    private Client destino;
+    //@XmlIDREF
+   // private Client destino;
     
     private boolean isonline;
     
     public Client(){
-        this.id = "-";
-        this.password = "-";
+        
+        this.id = "N/A";
+        this.password = "`";
         this.nombre = "-";
         this.nickname = "-";
+        
         this.friends = Collections.synchronizedList(new ArrayList<Client>());
         chats = Collections.synchronizedList(new ArrayList<Chat>());
         for (int i = 0; i < chats.size(); i++) {
             for (int j = 0; j < chats.get(i).getChat().size(); j++) {
-                chats.get(j).getChat().get(i).setRemitente(this);
+                chats.get(j).getChat().get(i).setRemitente(this.nickname);
             }
         }
-        destino = null;
+        
+        //destino = null;
+        isonline = true;
+
+    }
+ public Client(String id, String password, String nombre, String nickname) {
+        this.id = id;
+        this.password = password;
+        this.nombre = nombre;
+        this.nickname = nickname;
+          this.friends = Collections.synchronizedList(new ArrayList<Client>());
+        chats = Collections.synchronizedList(new ArrayList<Chat>());
+        for (int i = 0; i < chats.size(); i++) {
+            for (int j = 0; j < chats.get(i).getChat().size(); j++) {
+                chats.get(j).getChat().get(i).setRemitente(this.nickname);
+            }
+        }     
+
         isonline = false;
     }
-
     public Client(String id, String password, String nombre, String nickname, List<Client> friends) {
         this.id = id;
         this.password = password;
         this.nombre = nombre;
         this.nickname = nickname;
-        this.friends = Collections.synchronizedList(new ArrayList<Client>());
+          this.friends = Collections.synchronizedList(new ArrayList<Client>());
+        chats = Collections.synchronizedList(new ArrayList<Chat>());
+        for (int i = 0; i < chats.size(); i++) {
+            for (int j = 0; j < chats.get(i).getChat().size(); j++) {
+                chats.get(j).getChat().get(i).setRemitente(this.nickname);
+            }
+        }     
+
         isonline = false;
     }
 
-    public Client(String id, String password, String nombre, String nickname, List<Client> friends, List<Chat> chats, Client destino, boolean isonline) {
+    public Client(String id, String password, String nombre, String nickname, List<Client> friends, List<Chat> chats, boolean isonline) {
         this.id = id;
         this.password = password;
         this.nombre = nombre;
         this.nickname = nickname;
         this.friends = friends;
         this.chats = Collections.synchronizedList(chats);
-        this.destino = destino;
+        //this.destino = destino;
         this.isonline = isonline;
     }
 
@@ -118,13 +143,13 @@ public class Client implements Serializable{
         this.friends = friends;
     }
 
-    public Client getDestino() {
-        return this.destino;
-    }
+ //   public Client getDestino() {
+  //      return this.destino;
+  //  }
 
-    public void setDestino(Client destino) {
-        this.destino = destino;
-    }
+  //  public void setDestino(Client destino) {
+  //      this.destino = destino;
+   /// }
 
     public boolean getIsonline() {
         return isonline;
@@ -142,19 +167,25 @@ public class Client implements Serializable{
         this.chats = chats;
     }
     
-    public Client findFriend(String nickname){
+    public Client findFriend(String nickname){   
+        System.out.println("Amigos Mostrados");
         for (int i = 0; i < this.friends.size(); i++) {
-            if (nickname == friends.get(i).getNickname()) {
+           
+             System.out.println(friends.get(i).getNickname());
+             
+            if (nickname.equals(friends.get(i).getNickname())) {
                 return friends.get(i);
             }
         }
+          System.out.println("Null chay no encontrado");
         return null;
     }
     
     public Chat getChatFriend(String nickname){
         System.out.println("Chat protocol get chat friend");
         for (int i = 0; i < this.chats.size(); i++) {
-            if (this.chats.get(i).getDestino().getNickname()== nickname) {
+             System.out.println(this.chats.get(i).getDestino());
+            if (this.chats.get(i).getDestino().equals(nickname)) {
                 System.out.println("OJO: chat encontrado");
                 return chats.get(i);
             }
@@ -164,9 +195,9 @@ public class Client implements Serializable{
     }
     
     public void addtoChat(Mensaje msg){//busca el primer msg de la conversacion
-        Client destino = msg.getDestino();
+        //Client destino = msg.getDestino();
         for (int i = 0; i < this.chats.size(); i++) {
-            if (this.chats.get(i).getDestino().getNickname() == destino.getNickname()) {
+            if (this.chats.get(i).getDestino().equals(msg.getDestino())) {
                 chats.get(i).getChat().add(msg);
                 break;
             }
@@ -178,7 +209,7 @@ public class Client implements Serializable{
     public void addFriend(Client c){
         if (!isDuplicated(c.getNickname())) {
             this.friends.add(c);
-            Chat chat = new Chat(this,c);
+            Chat chat = new Chat(this.nickname,c.getNickname());
             this.chats.add(chat);
         }
     }
