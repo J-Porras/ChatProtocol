@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Porras
  */
-//bnnnn
+//
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Data {
